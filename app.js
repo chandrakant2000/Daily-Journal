@@ -22,13 +22,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const DB = process.env.DATABASE.replace(
-    '<password>',
-    process.env.DATABASE_PASSWORD
-);
+const url = 'mongodb+srv://' + process.env.DATABASE_USER + ':' + process.env.DATABASE_PASSWORD +
+            '@cluster0.q9dui.mongodb.net/' + process.env.DATABASE_NAME + '?retryWrites=true';
 
-mongoose.connect(DB, {useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: false})
-.then(() => console.log('DB connection is successful'));
+mongoose
+  .connect(url, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("DB connection is successful"));
 
 process.on('unhandledRejection', err => {
     console.log('UNHANDLED REJECTION! Shutting down...');
