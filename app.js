@@ -14,7 +14,7 @@ process.on('uncaughtException', err => {
 
 const homeStartingContent = "Welcome to my Daily Journal. You can read any journal of your interest. Click on compose button to compose a new journal.";
 const aboutContent = "This website is for the people who want to read journals for free and who want to post their journals for free.";
-const contactContent = " Mail us at xyz@gmail.com for any queries. ";
+const contactContent = "Mail us at xyz@gmail.com for any queries.";
 
 const app = express();
 
